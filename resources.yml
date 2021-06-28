@@ -1,0 +1,30 @@
+Resources:
+  TodoTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: todo-table-${self:custom.stage}
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: username
+          AttributeType: S
+        - AttributeName: createdAt
+          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: '2'
+        WriteCapacityUnits: '2'
+      GlobalSecondaryIndexes:
+        - IndexName: user-index
+          KeySchema:
+            - AttributeName: username
+              KeyType: HASH
+            - AttributeName: createdAt
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: '2'
+            WriteCapacityUnits: '2'

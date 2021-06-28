@@ -1,0 +1,79 @@
+{
+    "env": {
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "root": true,
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "error": true,
+        "err": true,
+        "User": true,
+        "notify": true,
+        "transaction": true,
+        "userCredit": true,
+        "params": true,
+        "docClient": true,
+        "processDepositTx": true,
+        "done": true,
+        "callback": true,
+        "validate": true,
+        "Wallet": true,
+        "EnvironmentVariableError": true,
+        "e": true,
+        "Transactions": true,
+        "Monnify": true,
+        "validateSubmitSaleEvent": true,
+        "environmentVariables": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "strict": "off",
+        "import/no-unresolved": 1,
+        "no-param-reassign": 0,
+        "no-plusplus": 0,
+        "prefer-promise-reject-errors": 0,
+        "no-underscore-dangle": 1,
+        "import/no-cycle": 0,
+        "import/prefer-default-export": 0,
+        "no-restricted-syntax": 0,
+        "no-global-assign": 0,
+        "no-buffer-constructor": 1,
+        "no-continue": 0,
+        "brace-style": 0,
+        "import/extensions": 0,
+        "max-classes-per-file": 0,
+        "class-methods-use-this": 0,
+        //DO NOT TOUCH
+        "max-len": 0,
+        "prefer-const": 0,
+        "consistent-return": 0,
+        "no-return-await": 0,
+        "no-use-before-define": 0,
+        "no-async-promise-executor": 0,
+        "no-unreachable": 0,
+        "no-console": "off",
+        "no-restricted-globals": 0,
+        "no-await-in-loop": 0,
+        "no-shadow": 0
+    },
+    "overrides": [{
+        "files": [
+            "*.json"
+        ],
+        "rules": {
+            "strict": 2
+        },
+        "extends": [
+            "plugin:json/recommended"
+        ]
+    }]
+}

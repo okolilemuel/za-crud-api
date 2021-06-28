@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules/
+
+# Webpack directory
+.webpack
+
+# Serverless directories
+.serverless/
+
+# dotenv environment variables files
+.env
+.env*
+
+.nyc*

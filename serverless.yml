@@ -1,0 +1,48 @@
+service: za-todo-api
+description: ZA Todo API
+
+package:
+  individually: false
+  excludeDevDependencies: true
+
+custom:
+  defaultRegion: eu-west-2
+  stage: ${opt:stage, self:provider.stage}
+  region: ${opt:region, self:provider.region}
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  prune:
+    automatic: true
+    includeLayers: true
+    number: 5
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: eu-west-2
+  stage: dev
+  environment:
+    REGION: ${self:custom.region}
+    TODO_TABLE: todo-table-${self:custom.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:*
+        - logs:CreateLogGroup*
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - ssm:GetParameters
+      Resource: '*'
+      
+functions:
+  - ${file(./functions.yml)}
+
+resources: 
+  - ${file(./resources.yml)}
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-export-env
+  - serverless-prune-plugin

@@ -1,0 +1,34 @@
+CreateTodoItem:
+  handler: handler.CreateTodoItem
+  events:
+    - http:
+        path: /todo
+        method: POST
+
+GetTodoItem:
+  handler: handler.GetTodoItem
+  events:
+    - http:
+        path: /todo/{username}/{itemId}
+        method: GET
+
+ListTodoItems:
+  handler: handler.ListTodoItems
+  events:
+    - http:
+        path: /todo/{username}
+        method: GET
+
+UpdateTodoItem:
+  handler: handler.UpdateTodoItem
+  events:
+    - http:
+        path: /todo/
+        method: PUT
+
+DeleteTodoItem:
+  handler: handler.DeleteTodoItem
+  events:
+    - http:
+        path: /todo/{username}/{itemId}
+        method: DELETE
